@@ -52,6 +52,25 @@ Los botones ya estan integrados en la web. Solo cambia las URLs cuando las pagin
 - Imagenes `.webp` para carga rapida.
 - Diseno responsive para telefono, tablet y escritorio.
 
+## Cloudflare
+
+El repositorio incluye `wrangler.jsonc` para despliegue con Workers Static Assets usando el nombre `krakentresd`. La carpeta publica para Cloudflare es `public/`.
+
+Si se configura como Cloudflare Pages clasico, usar:
+
+```text
+Framework preset: None
+Build command: dejar vacio
+Build output directory: public
+Root directory: /
+```
+
+Si se configura como Worker con assets, usar:
+
+```text
+Deploy command: npx wrangler deploy
+```
+
 ## Marca
 
 **Kraken Tres D** comunica creatividad, fabricacion digital, productos utiles y una tienda flexible de novedades. La linea comercial central es:
@@ -59,4 +78,3 @@ Los botones ya estan integrados en la web. Solo cambia las URLs cuando las pagin
 ```text
 Listos para crear.
 ```
-
