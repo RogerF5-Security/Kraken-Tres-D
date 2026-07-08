@@ -1,8 +1,8 @@
 # Kraken Tres D
 
-**Impresion 3D profesional, novedades y productos varios para Guatemala.**
+**Impresion 3D, llaveros, regalos, gadgets, souvenirs y tendencias virales para Guatemala.**
 
-Kraken Tres D es un emprendimiento enfocado en convertir ideas, necesidades y detalles personalizados en productos reales: piezas impresas en 3D, regalos, repuestos funcionales, gadgets, accesorios y articulos varios listos para vender por redes sociales.
+Kraken Tres D lleva tus ideas al siguiente nivel con piezas impresas en 3D, productos personalizados, impresion multicolor, variedad de filamentos y articulos novedosos para regalar, usar o compartir.
 
 ## Sitio web
 
@@ -19,30 +19,30 @@ Cuando GitHub Pages este activo, la web quedara publicada en:
 https://rogerf5-security.github.io/Kraken-Tres-D/
 ```
 
-## Que ofrece Kraken Tres D
+## Que puedes pedir
 
-- **Impresion 3D personalizada:** piezas decorativas, soportes, organizadores, prototipos y soluciones bajo demanda.
-- **Regalos y detalles personalizados:** llaveros, nombres, figuras, articulos de temporada y productos multicolor.
-- **Repuestos funcionales:** piezas de reemplazo no criticas, adaptadores, clips y organizadores.
-- **Productos varios:** gadgets, accesorios, extras, articulos utiles y novedades para ventas rapidas.
-- **Combos comerciales:** mezcla de impresion 3D + productos extras para fechas especiales.
+- **Tendencias 3D virales:** dragones articulados, macetas criatura, modelos unicos y decoracion llamativa.
+- **Llaveros y souvenirs:** detalles personalizados para eventos, regalos, marcas o recuerdos.
+- **Regalos personalizados:** nombres, figuras, piezas multicolor y detalles especiales.
+- **Gadgets y accesorios:** organizadores, articulos utiles, novedades y productos para el dia a dia.
+- **Ideas a medida:** cuentanos que necesitas y coordinamos medidas, material, color, cantidad y entrega.
 
 ## Enlaces sociales
 
-Los botones ya estan integrados en la web. Solo cambia las URLs cuando las paginas finales esten listas:
+Los botones ya estan integrados en la web:
 
-- Facebook: `https://www.facebook.com/krakentresd`
-- Instagram: `https://www.instagram.com/krakentresd`
-- TikTok: `https://www.tiktok.com/@krakentresd`
+- Facebook: `https://www.facebook.com/share/1DFEUPWQ2h/`
+- Instagram: `https://www.instagram.com/kraken.tresd?igsh=MWF3cXJxY21oZmQwYQ==`
+- TikTok: `https://www.tiktok.com/@kraken.tres.d?_r=1&_t=ZS-97risr1pqFt`
 - WhatsApp: `https://wa.me/50200000000`
 
 ## Flujo comercial sugerido
 
-1. El cliente escribe por WhatsApp indicando que necesita.
-2. Se coordinan detalles: medidas, color, cantidad, uso, disponibilidad y entrega.
-3. Se envia precio y tiempo estimado.
-4. Para pedidos personalizados se confirma con anticipo.
-5. Se produce, valida, empaca y entrega.
+1. Dinos que necesitas.
+2. Coordinamos medidas, material, color, cantidad y entrega.
+3. Te damos opciones y precio.
+4. Preparamos tu pieza, regalo, gadget o souvenir.
+5. Coordinamos entrega para que recibas tu pedido rapido y facil.
 
 ## Tecnologia del sitio
 
@@ -52,29 +52,11 @@ Los botones ya estan integrados en la web. Solo cambia las URLs cuando las pagin
 - Imagenes `.webp` para carga rapida.
 - Diseno responsive para telefono, tablet y escritorio.
 
-## Cloudflare
-
-El repositorio incluye `wrangler.jsonc` para despliegue con Workers Static Assets usando el nombre `krakentresd`. La carpeta publica para Cloudflare es `public/`.
-
-Si se configura como Cloudflare Pages clasico, usar:
-
-```text
-Framework preset: None
-Build command: dejar vacio
-Build output directory: public
-Root directory: /
-```
-
-Si se configura como Worker con assets, usar:
-
-```text
-Deploy command: npx wrangler deploy
-```
-
 ## Marca
 
-**Kraken Tres D** comunica creatividad, fabricacion digital, productos utiles y una tienda flexible de novedades. La linea comercial central es:
+**Kraken Tres D** comunica creatividad, tecnologia, novedades y productos que invitan a pedir algo diferente. Lineas comerciales:
 
 ```text
-Listos para crear.
+Llevamos tus ideas al siguiente nivel.
+Tenemos las tendencias mas virales para ti.
 ```
