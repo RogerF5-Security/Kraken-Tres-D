@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="La historia de Kraken Tres D: una marca familiar fundada el 3 de julio de 2026 para convertir ideas, regalos, repuestos y novedades en piezas reales.">
+  <meta property="og:title" content="Por que somos Kraken Tres D">
+  <meta property="og:description" content="El kraken como metodo: alcance, precision, creatividad y una familia de tres llevando ideas al siguiente nivel.">
+  <meta property="og:image" content="assets/img/historia_kraken_hero.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/img/logo_ktd.webp">
+  <title>Por que somos Kraken Tres D</title>
+  <style>
+    :root {
+      --deep: #031820;
+      --ink: #062d3a;
+      --aqua: #19b6c7;
+      --aqua-2: #72f1ee;
+      --gold: #d8b66a;
+      --coral: #f16f4b;
+      --mint: #4ec79c;
+      --paper: #f4fbfb;
+      --white: #ffffff;
+      --muted: #9dc2c8;
+      --line: rgba(255, 255, 255, .16);
+      --shadow: 0 26px 80px rgba(0, 0, 0, .34);
+      --soft-shadow: 0 18px 44px rgba(3, 24, 32, .18);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: #153d47;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(25, 182, 199, .18), transparent 30%),
+        radial-gradient(circle at 88% 10%, rgba(216, 182, 106, .14), transparent 24%),
+        var(--paper);
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      color: var(--white);
+      background: rgba(3, 24, 32, .86);
+      border-bottom: 1px solid rgba(255, 255, 255, .14);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 8px 26px rgba(0,0,0,.24);
+      flex: 0 0 auto;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .brand span span {
+      display: block;
+      margin-top: 4px;
+      color: #bdeff4;
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-weight: 850;
+      font-size: 14px;
+    }
+
+    .navlinks a {
+      color: #eafcff;
+      text-decoration: none;
+    }
+
+    .socials {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .social,
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 900;
+      line-height: 1.1;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .social {
+      min-height: 38px;
+      padding: 9px 12px;
+      color: #effdff;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .22);
+      font-size: 13px;
+    }
+
+    .social:hover,
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .social.whatsapp {
+      color: #072f1c;
+      background: #bff4d6;
+      border-color: #bff4d6;
+    }
+
+    .btn {
+      min-height: 50px;
+      padding: 14px 20px;
+      color: #031820;
+      background: linear-gradient(135deg, #ffffff, #bdf7fb);
+      box-shadow: 0 16px 36px rgba(25, 182, 199, .26);
+      border: 1px solid rgba(255,255,255,.28);
+      text-align: center;
+      max-width: 100%;
+    }
+
+    .btn.dark {
+      color: var(--white);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.34);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      color: var(--white);
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(3, 24, 32, .97) 0%, rgba(3, 24, 32, .84) 35%, rgba(6, 45, 58, .34) 67%, rgba(3, 24, 32, .22) 100%),
+        url("assets/img/historia_kraken_hero.webp") center right / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 160px;
+      background: linear-gradient(180deg, rgba(244,251,251,0), var(--paper));
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+      gap: 38px;
+      align-items: end;
+      padding: 76px 0 98px;
+    }
+
+    .hero-grid > *,
+    .split > *,
+    .cards > *,
+    .method-grid > *,
+    .timeline-item > * {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.10);
+      color: #ccfbff;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    h1, h2, h3, p { overflow-wrap: break-word; }
+
+    h1 {
+      max-width: 850px;
+      margin: 20px 0 18px;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: .9;
+      letter-spacing: 0;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--aqua-2);
+      overflow-wrap: anywhere;
+    }
+
+    h1 strong {
+      display: block;
+      color: var(--white);
+      font-weight: 950;
+    }
+
+    .lead {
+      max-width: 690px;
+      margin: 0;
+      color: #dbf9fb;
+      font-size: clamp(18px, 2.1vw, 23px);
+      line-height: 1.42;
+      font-weight: 650;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .origin-card {
+      padding: 26px;
+      border-radius: 8px;
+      background: rgba(3, 24, 32, .72);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .origin-card img {
+      width: 104px;
+      height: 104px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 14px 42px rgba(0,0,0,.28);
+    }
+
+    .origin-card strong {
+      display: block;
+      color: var(--gold);
+      font-size: 42px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .origin-card p {
+      margin: 0;
+      color: #e7fbff;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    .section {
+      padding: 92px 0;
+      position: relative;
+    }
+
+    .section.dark {
+      color: var(--white);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(25, 182, 199, .18), transparent 28%),
+        linear-gradient(135deg, #031820, #062d3a);
+    }
+
+    .section-head {
+      max-width: 820px;
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      color: var(--coral);
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 10px;
+    }
+
+    .section.dark .kicker {
+      color: var(--gold);
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .section.dark h2 {
+      color: var(--white);
+    }
+
+    .section-copy {
+      margin: 18px 0 0;
+      max-width: 760px;
+      color: #456b74;
+      font-size: 18px;
+      line-height: 1.62;
+      font-weight: 620;
+    }
+
+    .section.dark .section-copy {
+      color: #c7eef2;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .art-frame {
+      position: relative;
+      min-height: 540px;
+      border-radius: 8px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(3, 24, 32, .05), rgba(3, 24, 32, .24)),
+        url("assets/img/historia_kraken_hero.webp") center / cover no-repeat;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .art-frame::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.42);
+      pointer-events: none;
+    }
+
+    .floating-note {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 20px;
+      color: var(--white);
+      background: rgba(3, 24, 32, .78);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      backdrop-filter: blur(16px);
+    }
+
+    .floating-note strong {
+      display: block;
+      color: var(--aqua-2);
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .floating-note span {
+      display: block;
+      color: #dffcff;
+      line-height: 1.5;
+      font-weight: 650;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      min-width: 0;
+      border-radius: 8px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(6, 45, 58, .12);
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+    }
+
+    .section.dark .card {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.16);
+      box-shadow: none;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .card-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+      color: #031820;
+      background: linear-gradient(135deg, var(--aqua-2), var(--gold));
+      font-weight: 950;
+      font-size: 18px;
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.12;
+    }
+
+    .section.dark h3 {
+      color: var(--white);
+    }
+
+    .card p {
+      margin: 12px 0 0;
+      color: #4a6f78;
+      line-height: 1.58;
+      font-weight: 620;
+    }
+
+    .section.dark .card p {
+      color: #c9f1f5;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .method {
+      min-width: 0;
+      padding: 20px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    .method strong {
+      display: block;
+      color: var(--gold);
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .method span {
+      display: block;
+      color: #d7f7fb;
+      line-height: 1.52;
+      font-weight: 620;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      padding: 22px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 1px solid rgba(6, 45, 58, .12);
+      box-shadow: 0 12px 32px rgba(6, 45, 58, .08);
+    }
+
+    .date {
+      color: var(--coral);
+      font-weight: 950;
+      font-size: 18px;
+    }
+
+    .timeline-item h3 {
+      font-size: 22px;
+    }
+
+    .quote-panel {
+      padding: 44px;
+      border-radius: 8px;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(3, 24, 32, .92), rgba(6, 45, 58, .78)),
+        url("assets/img/ideas_siguiente_nivel_banner.webp") center / cover no-repeat;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .quote-panel h2 {
+      color: var(--white);
+    }
+
+    .quote-panel p {
+      color: #dffcff;
+    }
+
+    .footer {
+      padding: 38px 0;
+      color: #c8eef2;
+      background: #031820;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    .footer-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer strong {
+      display: block;
+      color: var(--white);
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .footer span {
+      display: block;
+      max-width: 680px;
+      line-height: 1.5;
+      font-weight: 620;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 80;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 15px 18px;
+      border-radius: 999px;
+      color: #06361f;
+      background: #bff4d6;
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow: 0 18px 44px rgba(3, 24, 32, .28);
+      text-decoration: none;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .whatsapp-float::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      margin-right: 9px;
+      border-radius: 50%;
+      background: #16a34a;
+      box-shadow: 0 0 0 6px rgba(22,163,74,.15);
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        min-height: auto;
+        padding: 12px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .navlinks > a {
+        display: none;
+      }
+
+      .navlinks {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .hero {
+        min-height: auto;
+        background-position: center;
+      }
+
+      .hero-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        padding-top: 56px;
+      }
+
+      .origin-card {
+        max-width: 520px;
+      }
+
+      .cards,
+      .method-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .brand strong {
+        font-size: 17px;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .social {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      .shell {
+        width: calc(100% - 32px);
+      }
+
+      h1 {
+        font-size: clamp(38px, 10vw, 46px);
+      }
+
+      .lead {
+        font-size: 17px;
+        line-height: 1.48;
+      }
+
+      .hero-grid > div:first-child,
+      .origin-card {
+        max-width: 340px;
+      }
+
+      .cta-row .btn {
+        width: 100%;
+      }
+
+      .cards,
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .art-frame {
+        min-height: 420px;
+      }
+
+      .quote-panel {
+        padding: 28px;
+      }
+
+      .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        width: 54px;
+        height: 54px;
+        min-height: 50px;
+        padding: 0;
+        font-size: 0;
+      }
+
+      .whatsapp-float::before {
+        content: "WA";
+        width: auto;
+        height: auto;
+        margin: 0;
+        color: #06361f;
+        background: transparent;
+        box-shadow: none;
+        font-size: 14px;
+        font-weight: 950;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="index.html" aria-label="Volver al inicio de Kraken Tres D">
+        <img src="assets/img/logo_ktd.webp" alt="Logo Kraken Tres D">
+        <span>
+          <strong>Kraken Tres D</strong>
+          <span>Historia de marca</span>
+        </span>
+      </a>
+      <nav class="navlinks" aria-label="Navegacion principal">
+        <a href="index.html">Inicio</a>
+        <a href="inspiracion.html">Inspirate</a>
+        <a href="#origen">Origen</a>
+        <a href="#metodo">Metodo Kraken</a>
+        <a href="#tres">El 3</a>
+        <div class="socials" aria-label="Redes sociales">
+          <a class="social" href="https://www.facebook.com/share/1DFEUPWQ2h/" target="_blank" rel="noreferrer">Facebook</a>
+          <a class="social" href="https://www.instagram.com/kraken.tresd?igsh=MWF3cXJxY21oZmQwYQ==" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="social" href="https://www.tiktok.com/@kraken.tres.d?_r=1&amp;_t=ZS-97risr1pqFt" target="_blank" rel="noreferrer">TikTok</a>
+          <a class="social whatsapp" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20conocer%20mas%20y%20hacer%20un%20pedido" target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Por que somos Kraken Tres D">
+      <div class="shell hero-grid">
+        <div>
+          <span class="eyebrow">Fundada el 3 de julio de 2026</span>
+          <h1><strong>Por que somos</strong><span>Kraken</span><span>Tres D.</span></h1>
+          <p class="lead">
+            Nacimos para tomar ideas, necesidades, regalos, repuestos y novedades,
+            envolverlas con tecnica, creatividad y entrega, y convertirlas en piezas reales.
+            No somos solo impresion 3D: somos una forma de resolver, crear y sorprender.
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="#metodo">Ver el Metodo Kraken</a>
+            <a class="btn dark" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20contarles%20una%20idea" target="_blank" rel="noreferrer">Contarnos una idea</a>
+          </div>
+        </div>
+
+        <aside class="origin-card" id="origen">
+          <img src="assets/img/logo_ktd.webp" alt="Logo Kraken Tres D">
+          <strong>03.07.2026</strong>
+          <p>
+            Ese dia se marca el inicio: una familia de tres decide construir una marca con alcance,
+            disciplina y caracter propio. El tres no es un detalle. Es origen, identidad y promesa.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell split">
+        <div class="art-frame" aria-label="Arte epico Kraken Tres D">
+          <div class="floating-note">
+            <strong>Una idea no se deja a la deriva.</strong>
+            <span>Se escucha, se mide, se disena, se imprime, se revisa y se entrega con intencion.</span>
+          </div>
+        </div>
+        <div>
+          <div class="kicker">El simbolo</div>
+          <h2>El kraken no es un monstruo. Es una metodologia.</h2>
+          <p class="section-copy">
+            En los relatos marineros del norte de Europa, el kraken aparece como una presencia inmensa:
+            algo que vive en profundidad, se mueve con fuerza y extiende multiples brazos a la vez.
+            Nosotros adaptamos esa imagen al negocio: cada brazo representa una capacidad operativa.
+          </p>
+          <p class="section-copy">
+            Un brazo escucha al cliente. Otro transforma la idea. Otro cuida la impresion.
+            Otro revisa calidad. Otro prepara el empaque. Otro coordina entrega.
+            Asi Kraken Tres D trabaja con alcance, orden y creatividad para llevar tus ideas al siguiente nivel.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="metodo">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">Metodo Kraken</div>
+          <h2>Muchos brazos, un solo resultado: tu pedido bien hecho.</h2>
+          <p class="section-copy">
+            Cada solicitud entra como una historia. Puede ser un regalo, un llavero, un gadget,
+            un souvenir, una pieza util o una tendencia viral. El metodo la convierte en algo claro,
+            fabricable y listo para llegar a tus manos.
+          </p>
+        </div>
+
+        <div class="method-grid">
+          <div class="method">
+            <strong>1. Escuchar</strong>
+            <span>Dinos que necesitas. Entendemos uso, medidas, color, cantidad y urgencia.</span>
+          </div>
+          <div class="method">
+            <strong>2. Traducir</strong>
+            <span>Convertimos la idea en una propuesta concreta: material, acabado y forma.</span>
+          </div>
+          <div class="method">
+            <strong>3. Prototipar</strong>
+            <span>Aterrizamos la pieza para que sea bonita, resistente y posible de fabricar.</span>
+          </div>
+          <div class="method">
+            <strong>4. Imprimir</strong>
+            <span>Usamos impresion multicolor, variedad de filamentos y parametros cuidados.</span>
+          </div>
+          <div class="method">
+            <strong>5. Revisar</strong>
+            <span>Verificamos acabado, capas, medidas, limpieza y presentacion.</span>
+          </div>
+          <div class="method">
+            <strong>6. Preparar</strong>
+            <span>Empacamos con criterio para que la pieza llegue protegida y presentable.</span>
+          </div>
+          <div class="method">
+            <strong>7. Entregar</strong>
+            <span>Coordinamos envio local o entrega para que lo recibas sin vueltas.</span>
+          </div>
+          <div class="method">
+            <strong>8. Mejorar</strong>
+            <span>Cada pedido deja aprendizaje para hacer el siguiente mas rapido y mejor.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tres">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">El numero 3</div>
+          <h2>Tres no es casualidad. Tres es la base.</h2>
+          <p class="section-copy">
+            Usamos el 3 como firma para diferenciarnos del 3D generico. En Kraken Tres D,
+            el tres representa familia, dimensiones y movimiento.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-body">
+              <span class="card-number">01</span>
+              <h3>Somos una familia de 3</h3>
+              <p>
+                La marca nace desde casa: tres personas, una vision y la energia de crear algo propio.
+                Por eso cada pedido importa. No es produccion fria; es trabajo con nombre, cuidado y orgullo.
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <span class="card-number">02</span>
+              <h3>Tres dimensiones</h3>
+              <p>
+                Toda idea empieza plana en la mente, pasa por diseno y termina en una pieza fisica.
+                Esa transformacion es nuestra especialidad: imaginar, fabricar y entregar.
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-body">
+              <span class="card-number">03</span>
+              <h3>Tres pasos simples</h3>
+              <p>
+                Nos cuentas que necesitas, coordinamos detalles y lo hacemos realidad.
+                Rapido, claro y sin complicarte con terminos tecnicos innecesarios.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">Linea de origen</div>
+          <h2>De una fecha a una marca con caracter.</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="date">3 jul 2026</div>
+            <div>
+              <h3>Nace Kraken Tres D</h3>
+              <p>
+                Una familia de tres decide levantar un emprendimiento con impresion 3D,
+                novedades, detalles personalizados y productos utiles para Guatemala.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="date">La idea</div>
+            <div>
+              <h3>Crear sin complicar</h3>
+              <p>
+                El cliente no necesita hablar como tecnico. Solo debe decir que necesita.
+                Nosotros coordinamos medidas, material, color, cantidad, acabado y entrega.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="date">La promesa</div>
+            <div>
+              <h3>Listos para crear</h3>
+              <p>
+                Llavero, regalo, gadget, souvenir, accesorio, repuesto o idea viral:
+                si se puede imaginar y fabricar, lo llevamos de concepto a pieza real.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell quote-panel">
+        <div class="kicker">Nuestra frase</div>
+        <h2>Del fondo de una idea a una pieza en tus manos.</h2>
+        <p class="section-copy">
+          Kraken Tres D existe para quienes quieren regalar algo unico, resolver una necesidad,
+          seguir una tendencia viral o darle forma a una idea propia. Somos impresion 3D,
+          productos personalizados, gadgets, accesorios, souvenirs y novedades con alma de taller familiar.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20hacer%20un%20pedido" target="_blank" rel="noreferrer">Pedir por WhatsApp</a>
+          <a class="btn dark" href="index.html">Volver al sitio principal</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-grid">
+      <div>
+        <strong>Kraken Tres D</strong>
+        <span>Fundada el 3 de julio de 2026. Una familia de tres, muchos brazos para crear y una mision: llevar tus ideas al siguiente nivel.</span>
+      </div>
+      <div class="socials" aria-label="Redes sociales del footer">
+        <a class="social" href="https://www.facebook.com/share/1DFEUPWQ2h/" target="_blank" rel="noreferrer">Facebook</a>
+        <a class="social" href="https://www.instagram.com/kraken.tresd?igsh=MWF3cXJxY21oZmQwYQ==" target="_blank" rel="noreferrer">Instagram</a>
+        <a class="social" href="https://www.tiktok.com/@kraken.tres.d?_r=1&amp;_t=ZS-97risr1pqFt" target="_blank" rel="noreferrer">TikTok</a>
+        <a class="social whatsapp" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20informacion" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a class="social" href="inspiracion.html">Inspirate</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20hacer%20un%20pedido" target="_blank" rel="noreferrer" aria-label="Escribir a Kraken Tres D por WhatsApp">WhatsApp</a>
+</body>
+</html>

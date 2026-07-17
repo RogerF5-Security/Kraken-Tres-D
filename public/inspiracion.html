@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explora catalogos 3D como MakerWorld, Printables, Thingiverse, Thangs y Cults 3D. Elige un modelo, envia el enlace y Kraken Tres D lo imprime por ti.">
+  <meta property="og:title" content="Inspirate | Kraken Tres D">
+  <meta property="og:description" content="Busca miles de modelos 3D, mandanos el enlace y convertimos tu idea en una pieza real.">
+  <meta property="og:image" content="assets/img/catalogo_infinito_modelos_3d.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/img/logo_ktd.webp">
+  <title>Inspirate | Kraken Tres D</title>
+  <style>
+    :root {
+      --ink: #062d3a;
+      --deep: #031820;
+      --aqua: #19b6c7;
+      --aqua-soft: #dff9fb;
+      --gold: #d8b66a;
+      --coral: #f16f4b;
+      --mint: #bff4d6;
+      --paper: #f5fbfb;
+      --white: #ffffff;
+      --muted: #66828a;
+      --line: rgba(6, 45, 58, .14);
+      --shadow: 0 24px 70px rgba(3, 24, 32, .22);
+      --soft-shadow: 0 18px 45px rgba(6, 45, 58, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: #183c46;
+      background:
+        radial-gradient(circle at 6% 0%, rgba(25, 182, 199, .18), transparent 30%),
+        radial-gradient(circle at 88% 8%, rgba(216, 182, 106, .14), transparent 28%),
+        var(--paper);
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255,255,255,.16);
+      background: rgba(3, 24, 32, .84);
+      backdrop-filter: blur(18px);
+      color: var(--white);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 8px 28px rgba(0,0,0,.22);
+      flex: 0 0 auto;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 21px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .brand span span {
+      display: block;
+      margin-top: 4px;
+      color: #bdeff4;
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      font-weight: 850;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .navlinks a {
+      text-decoration: none;
+      color: #eafcff;
+    }
+
+    .socials {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .social,
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      line-height: 1.1;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .social {
+      min-height: 40px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.24);
+      color: #effdff;
+      background: rgba(255,255,255,.08);
+      font-size: 13px;
+    }
+
+    .social.whatsapp {
+      color: #072f1c;
+      background: var(--mint);
+      border-color: var(--mint);
+    }
+
+    .social:hover,
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn {
+      min-height: 50px;
+      padding: 14px 20px;
+      border: 1px solid transparent;
+      color: #04202a;
+      background: linear-gradient(135deg, #ffffff, #bdf7fb);
+      box-shadow: 0 14px 34px rgba(25, 182, 199, .22);
+      text-align: center;
+      max-width: 100%;
+      white-space: normal;
+    }
+
+    .btn.dark {
+      background: var(--ink);
+      color: var(--white);
+      border-color: rgba(255,255,255,.12);
+    }
+
+    .btn.line {
+      background: rgba(255,255,255,.12);
+      color: var(--white);
+      border-color: rgba(255,255,255,.34);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 78px);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(3, 24, 32, .96), rgba(6, 45, 58, .76) 46%, rgba(6, 45, 58, .22)),
+        url("assets/img/catalogo_infinito_modelos_3d.webp") center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 150px;
+      background: linear-gradient(180deg, rgba(245,251,251,0), var(--paper));
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr);
+      gap: 38px;
+      align-items: end;
+      padding: 82px 0 96px;
+    }
+
+    .hero-grid > *,
+    .cards > *,
+    .split > *,
+    .social-grid > * {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,.26);
+      border-radius: 999px;
+      background: rgba(255,255,255,.11);
+      color: #ccfbff;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    h1, h2, h3, p { overflow-wrap: break-word; }
+
+    h1 {
+      max-width: 860px;
+      margin: 22px 0 20px;
+      font-size: clamp(46px, 7.6vw, 94px);
+      line-height: .9;
+      letter-spacing: 0;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--aqua-soft);
+    }
+
+    h1 strong {
+      display: block;
+      color: #78f6f2;
+    }
+
+    .lead {
+      max-width: 710px;
+      margin: 0;
+      color: #dbf9fb;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .quick-card {
+      padding: 26px;
+      border-radius: 8px;
+      background: rgba(3, 24, 32, .76);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .quick-card img {
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 14px 42px rgba(0,0,0,.28);
+    }
+
+    .quick-card h2 {
+      color: var(--white);
+      font-size: 34px;
+      line-height: 1;
+      margin: 0 0 12px;
+    }
+
+    .quick-card p {
+      margin: 0 0 18px;
+      color: #dffcff;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    .section {
+      padding: 92px 0;
+      position: relative;
+    }
+
+    .section.dark {
+      color: var(--white);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(25, 182, 199, .18), transparent 28%),
+        linear-gradient(135deg, #031820, #062d3a);
+    }
+
+    .section-head {
+      max-width: 860px;
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      color: var(--coral);
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 10px;
+    }
+
+    .section.dark .kicker {
+      color: var(--gold);
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .section.dark h2 {
+      color: var(--white);
+    }
+
+    .section-copy {
+      margin: 18px 0 0;
+      max-width: 780px;
+      color: #456b74;
+      font-size: 18px;
+      line-height: 1.62;
+      font-weight: 620;
+    }
+
+    .section.dark .section-copy {
+      color: #c7eef2;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: 8px;
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(6, 45, 58, .12);
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .source-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: #04202a;
+      background: #dff9fb;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .source-tag.main {
+      background: var(--mint);
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.12;
+    }
+
+    .card p {
+      margin: 12px 0 18px;
+      color: #4a6f78;
+      line-height: 1.58;
+      font-weight: 620;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(6,45,58,.14);
+      text-decoration: none;
+      color: var(--ink);
+      background: #ffffff;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .mini-btn.primary {
+      color: #031820;
+      background: linear-gradient(135deg, #bff4d6, #dff9fb);
+      border-color: transparent;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .step {
+      padding: 24px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .step strong {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+      color: #031820;
+      background: linear-gradient(135deg, #72f1ee, #d8b66a);
+      font-size: 18px;
+    }
+
+    .step h3 {
+      color: var(--white);
+    }
+
+    .step p {
+      color: #d7f7fb;
+      line-height: 1.55;
+      font-weight: 620;
+      margin: 12px 0 0;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 42px;
+      align-items: start;
+    }
+
+    .image-panel {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--soft-shadow);
+      border: 1px solid rgba(6,45,58,.12);
+      background: #ffffff;
+    }
+
+    .image-panel img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .tips {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .tip {
+      padding: 16px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 1px solid rgba(6,45,58,.12);
+      color: #456b74;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+      padding: 26px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 1px solid rgba(6,45,58,.12);
+      box-shadow: var(--soft-shadow);
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(6,45,58,.18);
+      border-radius: 8px;
+      min-height: 48px;
+      padding: 12px 14px;
+      color: #183c46;
+      background: #f8fcfc;
+      font: inherit;
+      font-weight: 650;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--aqua);
+      box-shadow: 0 0 0 4px rgba(25,182,199,.14);
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, .78fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .social-panel {
+      padding: 26px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .social-panel h3 {
+      color: var(--white);
+    }
+
+    .social-panel p {
+      color: #c9f1f5;
+      line-height: 1.58;
+      font-weight: 620;
+    }
+
+    .tiktok-wrap {
+      overflow: hidden;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.16);
+      padding: 12px;
+    }
+
+    .tiktok-embed {
+      margin: 0 auto !important;
+      max-width: 100% !important;
+      min-width: 280px !important;
+    }
+
+    .footer {
+      padding: 38px 0;
+      color: #c8eef2;
+      background: #031820;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    .footer-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer strong {
+      display: block;
+      color: var(--white);
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .footer span {
+      display: block;
+      max-width: 680px;
+      line-height: 1.5;
+      font-weight: 620;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 80;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 15px 18px;
+      border-radius: 999px;
+      color: #06361f;
+      background: #bff4d6;
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow: 0 18px 44px rgba(3, 24, 32, .28);
+      text-decoration: none;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .whatsapp-float::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      margin-right: 9px;
+      border-radius: 50%;
+      background: #16a34a;
+      box-shadow: 0 0 0 6px rgba(22,163,74,.15);
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        min-height: auto;
+        padding: 12px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .navlinks > a { display: none; }
+
+      .navlinks {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid,
+      .split,
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell {
+        width: calc(100% - 32px);
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .brand strong {
+        font-size: 17px;
+      }
+
+      .social {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      h1 {
+        font-size: clamp(40px, 12vw, 56px);
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      .hero-grid > div:first-child,
+      .quick-card {
+        max-width: 340px;
+      }
+
+      .cta-row .btn {
+        width: 100%;
+      }
+
+      .cards,
+      .steps,
+      .tips {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        width: 54px;
+        height: 54px;
+        min-height: 50px;
+        padding: 0;
+        font-size: 0;
+      }
+
+      .whatsapp-float::before {
+        content: "WA";
+        width: auto;
+        height: auto;
+        margin: 0;
+        color: #06361f;
+        background: transparent;
+        box-shadow: none;
+        font-size: 14px;
+        font-weight: 950;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="index.html" aria-label="Volver al inicio de Kraken Tres D">
+        <img src="assets/img/logo_ktd.webp" alt="Logo Kraken Tres D">
+        <span>
+          <strong>Kraken Tres D</strong>
+          <span>Inspiracion 3D</span>
+        </span>
+      </a>
+      <nav class="navlinks" aria-label="Navegacion principal">
+        <a href="index.html">Inicio</a>
+        <a href="#catalogos">Catalogos</a>
+        <a href="#enviar">Enviar enlace</a>
+        <a href="historia.html">Historia</a>
+        <div class="socials" aria-label="Redes sociales">
+          <a class="social" href="https://www.facebook.com/share/1DFEUPWQ2h/" target="_blank" rel="noreferrer">Facebook</a>
+          <a class="social" href="https://www.instagram.com/kraken.tresd?igsh=MWF3cXJxY21oZmQwYQ==" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="social" href="https://www.tiktok.com/@kraken.tres.d?_r=1&amp;_t=ZS-97risr1pqFt" target="_blank" rel="noreferrer">TikTok</a>
+          <a class="social whatsapp" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20buscar%20ideas%20para%20imprimir" target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Inspiracion para impresion 3D">
+      <div class="shell hero-grid">
+        <div>
+          <span class="eyebrow">Miles de ideas listas para imprimir</span>
+          <h1><span>Elige un modelo.</span><strong>Nosotros lo hacemos real.</strong></h1>
+          <p class="lead">
+            Si no sabes que pedir, explora catalogos 3D como MakerWorld, Printables,
+            Thingiverse, Thangs o Cults 3D. Encuentra algo que te guste, mandanos el enlace
+            y coordinamos color, material, tamano, cantidad y entrega.
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="https://makerworld.com/" target="_blank" rel="noreferrer">Explorar MakerWorld</a>
+            <a class="btn line" href="#enviar">Mandar un enlace</a>
+          </div>
+        </div>
+
+        <aside class="quick-card">
+          <img src="assets/img/logo_ktd.webp" alt="Logo Kraken Tres D">
+          <h2>Como pedir algo que viste en internet</h2>
+          <p>
+            Abres un catalogo, copias el link del modelo y nos lo envias por WhatsApp.
+            Nosotros revisamos si se puede imprimir y te damos opciones.
+          </p>
+          <a class="btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20mandarles%20un%20enlace%20de%20un%20modelo%203D" target="_blank" rel="noreferrer">Enviar por WhatsApp</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="catalogos">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">Catalogos recomendados</div>
+          <h2>Busca tendencias, regalos, repuestos, gadgets y decoracion.</h2>
+          <p class="section-copy">
+            Estas paginas suelen manejar formatos estandar como STL y 3MF. Eso permite preparar
+            muchos modelos dentro del flujo de impresion de Kraken Tres D con la Bambu Lab A1 Combo.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-body">
+              <span class="source-tag main">Principal</span>
+              <h3>MakerWorld</h3>
+              <p>La mejor primera parada para modelos pensados para el ecosistema Bambu Lab, perfiles 3MF y piezas listas para preparar.</p>
+              <div class="card-actions">
+                <a class="mini-btn primary" href="https://makerworld.com/" target="_blank" rel="noreferrer">Abrir catalogo</a>
+                <a class="mini-btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20imprimir%20un%20modelo%20de%20MakerWorld" target="_blank" rel="noreferrer">Avisarnos</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <span class="source-tag">Modelos utiles</span>
+              <h3>Printables</h3>
+              <p>Muy bueno para piezas practicas, organizadores, decoracion, herramientas, accesorios y modelos comunitarios bien documentados.</p>
+              <div class="card-actions">
+                <a class="mini-btn primary" href="https://www.printables.com/" target="_blank" rel="noreferrer">Abrir catalogo</a>
+                <a class="mini-btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20imprimir%20un%20modelo%20de%20Printables" target="_blank" rel="noreferrer">Avisarnos</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <span class="source-tag">Clasico</span>
+              <h3>Thingiverse</h3>
+              <p>Uno de los catalogos mas conocidos para encontrar llaveros, figuras, soportes, repuestos simples y modelos populares.</p>
+              <div class="card-actions">
+                <a class="mini-btn primary" href="https://www.thingiverse.com/" target="_blank" rel="noreferrer">Abrir catalogo</a>
+                <a class="mini-btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20imprimir%20un%20modelo%20de%20Thingiverse" target="_blank" rel="noreferrer">Avisarnos</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <span class="source-tag">Busqueda 3D</span>
+              <h3>Thangs</h3>
+              <p>Ideal para buscar modelos en varios repositorios y descubrir alternativas cuando no sabes exactamente que nombre usar.</p>
+              <div class="card-actions">
+                <a class="mini-btn primary" href="https://thangs.com/" target="_blank" rel="noreferrer">Abrir buscador</a>
+                <a class="mini-btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20imprimir%20un%20modelo%20que%20encontre%20en%20Thangs" target="_blank" rel="noreferrer">Avisarnos</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <span class="source-tag">Premium</span>
+              <h3>Cults 3D</h3>
+              <p>Buena opcion para modelos decorativos, figuras, regalos, coleccionables y disenos de autor, gratuitos o de pago.</p>
+              <div class="card-actions">
+                <a class="mini-btn primary" href="https://cults3d.com/" target="_blank" rel="noreferrer">Abrir catalogo</a>
+                <a class="mini-btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20imprimir%20un%20modelo%20de%20Cults%203D" target="_blank" rel="noreferrer">Avisarnos</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <span class="source-tag">Mas ideas</span>
+              <h3>MyMiniFactory</h3>
+              <p>Catalogo con figuras, miniaturas, accesorios, arte y productos creativos para regalos o proyectos mas especiales.</p>
+              <div class="card-actions">
+                <a class="mini-btn primary" href="https://www.myminifactory.com/" target="_blank" rel="noreferrer">Abrir catalogo</a>
+                <a class="mini-btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20imprimir%20un%20modelo%20de%20MyMiniFactory" target="_blank" rel="noreferrer">Avisarnos</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">Proceso rapido</div>
+          <h2>Tu no tienes que saber de impresion 3D. Solo dinos que quieres.</h2>
+          <p class="section-copy">
+            Nosotros revisamos si el modelo sirve, si necesita ajuste y que material conviene.
+            Asi evitas perder tiempo y recibes una cotizacion clara.
+          </p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <strong>1</strong>
+            <h3>Busca inspiracion</h3>
+            <p>Explora modelos de llaveros, regalos, gadgets, macetas, articulados, soportes, repuestos o decoracion.</p>
+          </div>
+          <div class="step">
+            <strong>2</strong>
+            <h3>Mandanos el link</h3>
+            <p>Copia el enlace del modelo y cuentanos color, tamano aproximado, cantidad y para que lo necesitas.</p>
+          </div>
+          <div class="step">
+            <strong>3</strong>
+            <h3>Lo imprimimos</h3>
+            <p>Te confirmamos precio, tiempo, material y entrega. Luego convertimos el modelo en una pieza real.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="enviar">
+      <div class="shell split">
+        <div class="image-panel">
+          <img src="assets/img/catalogo_infinito_modelos_3d.webp" alt="Catalogo digital de modelos 3D transformandose en piezas reales">
+        </div>
+        <div>
+          <div class="kicker">Enviar enlace directo</div>
+          <h2>Pega aqui el modelo que quieres imprimir.</h2>
+          <p class="section-copy">
+            Este formulario arma el mensaje automaticamente para WhatsApp. Solo pega el enlace,
+            agrega una nota y coordinamos medidas, material, color, cantidad y entrega.
+          </p>
+
+          <form id="modelForm">
+            <label>
+              Tu nombre
+              <input id="name" autocomplete="name" placeholder="Ej. Roger">
+            </label>
+            <label>
+              Pagina donde viste el modelo
+              <select id="source">
+                <option>MakerWorld</option>
+                <option>Printables</option>
+                <option>Thingiverse</option>
+                <option>Thangs</option>
+                <option>Cults 3D</option>
+                <option>MyMiniFactory</option>
+                <option>Otro sitio</option>
+              </select>
+            </label>
+            <label>
+              Enlace del modelo
+              <input id="modelLink" inputmode="url" placeholder="https://makerworld.com/...">
+            </label>
+            <label>
+              Que quieres cambiar o confirmar
+              <textarea id="details" placeholder="Color, tamano, cantidad, uso, fecha en que lo necesitas o cualquier detalle importante."></textarea>
+            </label>
+            <button class="btn" type="submit">Enviar modelo por WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">Ideas para buscar</div>
+          <h2>Palabras que te ayudan a encontrar modelos bonitos.</h2>
+          <p class="section-copy">
+            Puedes buscar en ingles o espanol. Muchas comunidades publican mas resultados con palabras en ingles.
+          </p>
+        </div>
+        <div class="tips">
+          <div class="tip">Regalos: keychain, custom name, gift, cute planter, flexi dragon.</div>
+          <div class="tip">Casa: organizer, cable holder, wall mount, desk setup, kitchen tool.</div>
+          <div class="tip">Gadgets: phone stand, controller holder, headphone stand, fidget toy.</div>
+          <div class="tip">Repuestos: replacement part, bracket, knob, clip, hinge, spacer.</div>
+          <div class="tip">Decoracion: vase mode, low poly, wall art, lamp shade, seasonal decor.</div>
+          <div class="tip">Bambu: A1, AMS Lite, multicolor, 3MF, print profile.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="shell social-grid">
+        <div>
+          <div class="kicker">Redes y catalogo</div>
+          <h2>Mira ideas, tendencias y pedidos listos para crear.</h2>
+          <p class="section-copy">
+            Tambien puedes inspirarte en nuestras redes. Si ves un video o una pieza que te guste,
+            mandanos captura, enlace o descripcion y te ayudamos a pedirla.
+          </p>
+          <div class="cards" style="grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 28px;">
+            <div class="social-panel">
+              <h3>Catalogo de WhatsApp</h3>
+              <p>Si tu WhatsApp Business tiene catalogo activo, este boton abre la vista de productos. Si no aparece, escribenos y te lo mandamos.</p>
+              <div class="card-actions">
+                <a class="mini-btn primary" href="https://wa.me/c/50247461797" target="_blank" rel="noreferrer">Ver catalogo</a>
+                <a class="mini-btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20ver%20su%20catalogo%20de%20productos" target="_blank" rel="noreferrer">Pedir catalogo</a>
+              </div>
+            </div>
+            <div class="social-panel">
+              <h3>Videos de TikTok</h3>
+              <p>Revisa tendencias, ideas virales, impresiones multicolor y productos que puedes pedirnos por mensaje.</p>
+              <div class="card-actions">
+                <a class="mini-btn primary" href="https://www.tiktok.com/@kraken.tres.d?_r=1&amp;_t=ZS-97risr1pqFt" target="_blank" rel="noreferrer">Ver TikTok</a>
+                <a class="mini-btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20vi%20una%20idea%20en%20TikTok%20y%20quiero%20cotizarla" target="_blank" rel="noreferrer">Cotizar video</a>
+              </div>
+            </div>
+            <div class="social-panel">
+              <h3>Instagram</h3>
+              <p>Ideas visuales, productos, regalos y novedades para pedir o compartir.</p>
+              <div class="card-actions">
+                <a class="mini-btn primary" href="https://www.instagram.com/kraken.tresd?igsh=MWF3cXJxY21oZmQwYQ==" target="_blank" rel="noreferrer">Abrir Instagram</a>
+              </div>
+            </div>
+            <div class="social-panel">
+              <h3>Facebook</h3>
+              <p>Contacto, publicaciones, novedades y mensajes rapidos para coordinar pedidos.</p>
+              <div class="card-actions">
+                <a class="mini-btn primary" href="https://www.facebook.com/share/1DFEUPWQ2h/" target="_blank" rel="noreferrer">Abrir Facebook</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tiktok-wrap">
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@kraken.tres.d" data-unique-id="kraken.tres.d" data-embed-type="creator">
+            <section>
+              <a target="_blank" rel="noreferrer" href="https://www.tiktok.com/@kraken.tres.d">Ver videos de Kraken Tres D en TikTok</a>
+            </section>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-grid">
+      <div>
+        <strong>Kraken Tres D</strong>
+        <span>Explora modelos, mandanos el enlace y convertimos tu idea en una pieza real.</span>
+      </div>
+      <div class="socials" aria-label="Redes sociales del footer">
+        <a class="social" href="index.html">Inicio</a>
+        <a class="social" href="historia.html">Historia</a>
+        <a class="social" href="https://www.facebook.com/share/1DFEUPWQ2h/" target="_blank" rel="noreferrer">Facebook</a>
+        <a class="social" href="https://www.instagram.com/kraken.tresd?igsh=MWF3cXJxY21oZmQwYQ==" target="_blank" rel="noreferrer">Instagram</a>
+        <a class="social" href="https://www.tiktok.com/@kraken.tres.d?_r=1&amp;_t=ZS-97risr1pqFt" target="_blank" rel="noreferrer">TikTok</a>
+        <a class="social whatsapp" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20mandarles%20un%20modelo%20para%20imprimir" target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20hacer%20un%20pedido" target="_blank" rel="noreferrer" aria-label="Escribir a Kraken Tres D por WhatsApp">WhatsApp</a>
+
+  <script async src="https://www.tiktok.com/embed.js"></script>
+  <script>
+    const form = document.getElementById("modelForm");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = document.getElementById("name").value.trim() || "cliente";
+      const source = document.getElementById("source").value;
+      const modelLink = document.getElementById("modelLink").value.trim() || "aun no tengo enlace, quiero ayuda para buscar";
+      const details = document.getElementById("details").value.trim() || "quiero coordinar material, color, tamano, cantidad y entrega";
+      const text = `Hola Kraken Tres D, soy ${name}. Vi un modelo en ${source}. Enlace: ${modelLink}. Detalles: ${details}`;
+      window.open(`https://wa.me/50247461797?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+    });
+  </script>
+</body>
+</html>

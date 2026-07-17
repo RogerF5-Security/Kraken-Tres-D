@@ -591,6 +591,120 @@
       color: #acdce3;
     }
 
+    .faq-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      border-radius: 8px;
+      border: 1px solid rgba(6, 45, 58, .14);
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(6, 45, 58, .08);
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 22px;
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 950;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      color: #04202a;
+      background: var(--aqua-soft);
+      flex: 0 0 auto;
+    }
+
+    .faq-item[open] summary::after {
+      content: "-";
+      background: var(--mint);
+    }
+
+    .faq-item p {
+      margin: 0;
+      padding: 0 22px 22px;
+      color: #456b74;
+      line-height: 1.6;
+      font-weight: 620;
+    }
+
+    .faq-cta {
+      margin-top: 22px;
+      padding: 24px;
+      border-radius: 8px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--ink), #0a4b59);
+      box-shadow: var(--soft-shadow);
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .faq-cta strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .faq-cta span {
+      display: block;
+      color: #d8faff;
+      font-weight: 620;
+      line-height: 1.5;
+      max-width: 720px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 80;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 15px 18px;
+      border-radius: 999px;
+      color: #06361f;
+      background: #bff4d6;
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow: 0 18px 44px rgba(3, 24, 32, .28);
+      text-decoration: none;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .whatsapp-float::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      margin-right: 9px;
+      border-radius: 50%;
+      background: #16a34a;
+      box-shadow: 0 0 0 6px rgba(22,163,74,.15);
+    }
+
     @media (max-width: 980px) {
       .navlinks > a { display: none; }
       .hero-grid,
@@ -698,6 +812,36 @@
         grid-template-columns: 1fr;
       }
 
+      .faq-item summary {
+        font-size: 16px;
+      }
+
+      .faq-cta {
+        align-items: flex-start;
+      }
+
+      .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        width: 54px;
+        height: 54px;
+        min-height: 50px;
+        padding: 0;
+        font-size: 0;
+      }
+
+      .whatsapp-float::before {
+        content: "WA";
+        width: auto;
+        height: auto;
+        margin: 0;
+        color: #06361f;
+        background: transparent;
+        box-shadow: none;
+        font-size: 14px;
+        font-weight: 950;
+      }
+
       .photo-stack {
         min-height: 360px;
       }
@@ -725,13 +869,16 @@
       <nav class="navlinks" aria-label="Navegacion principal">
         <a href="#servicios">Servicios</a>
         <a href="#productos">Productos</a>
+        <a href="inspiracion.html">Inspirate</a>
+        <a href="historia.html">Historia</a>
         <a href="#proceso">Proceso</a>
+        <a href="#faq">FAQ</a>
         <a href="#cotizar">Cotizar</a>
         <div class="socials" aria-label="Redes sociales">
           <a class="social" href="https://www.facebook.com/share/1DFEUPWQ2h/" target="_blank" rel="noreferrer">Facebook</a>
           <a class="social" href="https://www.instagram.com/kraken.tresd?igsh=MWF3cXJxY21oZmQwYQ==" target="_blank" rel="noreferrer">Instagram</a>
           <a class="social" href="https://www.tiktok.com/@kraken.tres.d?_r=1&amp;_t=ZS-97risr1pqFt" target="_blank" rel="noreferrer">TikTok</a>
-          <a class="social whatsapp" href="https://wa.me/50200000000?text=Hola%20Kraken%20Tres%20D,%20quiero%20informacion" target="_blank" rel="noreferrer">WhatsApp</a>
+          <a class="social whatsapp" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20informacion" target="_blank" rel="noreferrer">WhatsApp</a>
         </div>
       </nav>
     </div>
@@ -748,8 +895,10 @@
             souvenirs, decoracion, piezas utiles e impresion multicolor para que pidas algo unico.
           </p>
           <div class="cta-row">
-            <a class="btn" href="https://wa.me/50200000000?text=Hola%20Kraken%20Tres%20D,%20quiero%20contarles%20que%20necesito%20para%20coordinar%20mi%20pedido" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+            <a class="btn" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20contarles%20que%20necesito%20para%20coordinar%20mi%20pedido" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
             <a class="btn line" href="#servicios">Ver servicios</a>
+            <a class="btn line" href="inspiracion.html">Buscar ideas</a>
+            <a class="btn line" href="historia.html">Nuestra historia</a>
           </div>
         </div>
 
@@ -893,6 +1042,53 @@
       </div>
     </section>
 
+    <section class="section alt" id="faq">
+      <div class="shell split">
+        <div>
+          <div class="kicker">Preguntas frecuentes</div>
+          <h2>Resolvemos tus dudas antes de pedir.</h2>
+          <p class="section-copy">
+            Si es tu primera vez pidiendo una pieza 3D, tranquilo. No necesitas saber de archivos,
+            materiales o configuraciones: nos cuentas que necesitas y nosotros te guiamos.
+          </p>
+          <div class="faq-cta">
+            <div>
+              <strong>Quieres ver trabajos reales?</strong>
+              <span>La galeria de productos y piezas impresas esta en nuestro catalogo de WhatsApp. Puedes verlo o pedirnos ideas directamente.</span>
+            </div>
+            <a class="btn" href="https://wa.me/c/50247461797" target="_blank" rel="noreferrer">Ver catalogo</a>
+          </div>
+        </div>
+
+        <div class="faq-grid">
+          <details class="faq-item">
+            <summary>Cuanto tarda una impresion?</summary>
+            <p>Depende del tamano, material, cantidad y nivel de detalle. Piezas pequenas pueden estar rapido, mientras que figuras grandes, multicolor o pedidos por lote requieren mas tiempo. Al revisar tu idea te confirmamos tiempo estimado antes de iniciar.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Que colores tienen?</summary>
+            <p>Trabajamos con variedad de filamentos y podemos coordinar colores segun disponibilidad. Tambien podemos hacer piezas multicolor cuando el diseno lo permite, aprovechando el flujo de la Bambu Lab A1 Combo con AMS Lite.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Puedo pedir algo que vi en TikTok?</summary>
+            <p>Si. Mandanos el video, captura o enlace y revisamos si existe un modelo imprimible o si podemos buscar una alternativa parecida. Luego coordinamos tamano, color, material y entrega.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Hacen entregas?</summary>
+            <p>Si, coordinamos entrega local o envio segun ubicacion y disponibilidad. Antes de confirmar el pedido te indicamos opciones, costo de envio si aplica y tiempo estimado.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Que pasa si no tengo archivo 3D?</summary>
+            <p>No hay problema. Puedes describir lo que necesitas, mandar una foto, referencia o enlace. Nosotros te ayudamos a buscar modelos en catalogos como MakerWorld, Printables, Thingiverse, Thangs o Cults 3D.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Puedo pedir varias unidades?</summary>
+            <p>Si. Podemos cotizar por cantidad para llaveros, souvenirs, regalos, piezas utiles o productos para eventos. El precio y tiempo dependen del tamano, material, colores y cantidad total.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="section quote" id="cotizar">
       <div class="shell quote-grid">
         <div>
@@ -905,7 +1101,7 @@
             <a class="social" href="https://www.facebook.com/share/1DFEUPWQ2h/" target="_blank" rel="noreferrer">Facebook</a>
             <a class="social" href="https://www.instagram.com/kraken.tresd?igsh=MWF3cXJxY21oZmQwYQ==" target="_blank" rel="noreferrer">Instagram</a>
             <a class="social" href="https://www.tiktok.com/@kraken.tres.d?_r=1&amp;_t=ZS-97risr1pqFt" target="_blank" rel="noreferrer">TikTok</a>
-            <a class="social whatsapp" href="https://wa.me/50200000000?text=Hola%20Kraken%20Tres%20D,%20quiero%20informacion" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a class="social whatsapp" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20informacion" target="_blank" rel="noreferrer">WhatsApp</a>
           </div>
         </div>
 
@@ -944,10 +1140,15 @@
         <a class="social" href="https://www.facebook.com/share/1DFEUPWQ2h/" target="_blank" rel="noreferrer">Facebook</a>
         <a class="social" href="https://www.instagram.com/kraken.tresd?igsh=MWF3cXJxY21oZmQwYQ==" target="_blank" rel="noreferrer">Instagram</a>
         <a class="social" href="https://www.tiktok.com/@kraken.tres.d?_r=1&amp;_t=ZS-97risr1pqFt" target="_blank" rel="noreferrer">TikTok</a>
-        <a class="social whatsapp" href="https://wa.me/50200000000?text=Hola%20Kraken%20Tres%20D,%20quiero%20informacion" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a class="social whatsapp" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20informacion" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a class="social" href="inspiracion.html">Inspirate</a>
+        <a class="social" href="#faq">FAQ</a>
+        <a class="social" href="historia.html">Historia</a>
       </div>
     </div>
   </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20hacer%20un%20pedido" target="_blank" rel="noreferrer" aria-label="Escribir a Kraken Tres D por WhatsApp">WhatsApp</a>
 
   <script>
     const form = document.getElementById("quoteForm");
@@ -957,7 +1158,7 @@
       const service = document.getElementById("service").value;
       const message = document.getElementById("message").value.trim() || "quiero pedir algo y coordinar opciones";
       const text = `Hola Kraken Tres D, soy ${name}. Necesito: ${service}. Detalles: ${message}`;
-      window.open(`https://wa.me/50200000000?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+      window.open(`https://wa.me/50247461797?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
     });
   </script>
 </body>
