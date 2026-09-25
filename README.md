@@ -10,6 +10,7 @@ La pagina esta lista para GitHub Pages:
 
 - Archivo principal: `index.html`
 - Pagina de inspiracion y catalogos: `inspiracion.html`
+- Cotizador orientativo para clientes: `cotizador.html`
 - Historia de marca: `historia.html`
 - Assets visuales: `assets/img/`
 - Logo principal: `assets/img/logo_ktd.webp`

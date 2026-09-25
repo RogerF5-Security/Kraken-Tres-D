@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calcula un precio aproximado para tus piezas impresas en 3D con Kraken Tres D.">
+  <meta property="og:title" content="Cotizador orientativo | Kraken Tres D">
+  <meta property="og:description" content="Ingresa tiempo, peso por pieza y cantidad para conocer un rango de referencia.">
+  <link rel="icon" href="assets/img/logo_ktd.webp">
+  <title>Cotizador orientativo | Kraken Tres D</title>
+  <style>
+    :root { color-scheme: dark; --bg:#07161d; --panel:#102b36; --line:#2b5260; --text:#edfcff; --muted:#a7c6ce; --cyan:#70e5ee; --orange:#ff9c69; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; font-family:Arial,Helvetica,sans-serif; color:var(--text); background:radial-gradient(circle at 12% 3%,#19465a 0,transparent 34%),radial-gradient(circle at 92% 85%,#203c44 0,transparent 30%),var(--bg); }
+    a { color:inherit; }
+    .wrap { width:min(1100px,calc(100% - 36px)); margin:auto; }
+    header { border-bottom:1px solid var(--line); background:#07161de8; }
+    .top { min-height:85px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .brand img { width:52px; height:52px; object-fit:contain; border-radius:12px; }
+    .brand strong { display:block; font-size:1.12rem; }
+    .brand small { color:var(--muted); }
+    .back { border:1px solid var(--line); border-radius:999px; padding:10px 16px; text-decoration:none; white-space:nowrap; }
+    .back:hover,.back:focus-visible { border-color:var(--cyan); }
+    main { padding:clamp(38px,6vw,76px) 0 70px; }
+    .eyebrow { display:inline-block; color:var(--cyan); text-transform:uppercase; letter-spacing:.17em; font-size:.76rem; font-weight:700; }
+    h1 { font-size:clamp(2.3rem,6vw,4.5rem); line-height:1.02; margin:15px 0 18px; max-width:760px; letter-spacing:-.045em; }
+    .intro { max-width:700px; color:var(--muted); font-size:1.08rem; line-height:1.65; margin:0 0 34px; }
+    .layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,.88fr); gap:24px; align-items:start; }
+    .card { background:linear-gradient(155deg,#12313e,var(--panel)); border:1px solid var(--line); border-radius:24px; box-shadow:0 22px 70px #0004; padding:clamp(23px,4vw,38px); }
+    h2 { font-size:1.35rem; margin:0 0 8px; }
+    .sub { color:var(--muted); line-height:1.5; margin:0 0 28px; }
+    label { display:block; font-weight:700; margin:22px 0 0; }
+    label span { display:block; margin-bottom:9px; }
+    input { display:block; width:100%; min-height:54px; padding:12px 15px; border-radius:12px; border:1px solid #54707b; background:#071b25; color:var(--text); font:inherit; font-size:1.07rem; outline:none; }
+    input:focus { border-color:var(--cyan); box-shadow:0 0 0 3px #70e5ee30; }
+    input[aria-invalid="true"] { border-color:var(--orange); }
+    .help { display:block; color:var(--muted); font-size:.86rem; line-height:1.45; margin-top:8px; font-weight:400; }
+    .error { color:#ffc2a2; min-height:1.5em; margin:16px 0 0; font-size:.9rem; }
+    button,.cta { display:inline-flex; justify-content:center; align-items:center; width:100%; min-height:54px; border:0; border-radius:12px; padding:12px 18px; font:inherit; font-weight:800; cursor:pointer; text-decoration:none; text-align:center; }
+    button { color:#06232b; background:linear-gradient(100deg,var(--cyan),#a0f3ee); margin-top:8px; }
+    button:hover,button:focus-visible { filter:brightness(1.07); }
+    .result { scroll-margin-top:20px; }
+    .result .flag { color:var(--cyan); font-weight:700; font-size:.84rem; text-transform:uppercase; letter-spacing:.13em; }
+    .empty { color:var(--muted); line-height:1.65; padding:30px 0; }
+    .quote-value { font-size:clamp(2rem,4vw,3.1rem); font-weight:900; letter-spacing:-.05em; line-height:1.16; margin:19px 0 7px; color:#fff; }
+    .quote-caption { color:var(--muted); margin:0 0 22px; }
+    .divider { height:1px; background:var(--line); margin:25px 0; }
+    .detail { display:flex; justify-content:space-between; gap:15px; align-items:baseline; margin:15px 0; }
+    .detail span { color:var(--muted); }
+    .detail strong { text-align:right; }
+    .notice { background:#0a222d; border-left:3px solid var(--orange); border-radius:0 10px 10px 0; padding:14px 17px; margin:23px 0 20px; color:#dbedf0; line-height:1.55; font-size:.91rem; }
+    .cta { background:#25d366; color:#062d17; }
+    .cta:hover,.cta:focus-visible { background:#5ee18b; }
+    .fine { color:var(--muted); line-height:1.6; font-size:.89rem; margin:27px 0 0; }
+    footer { border-top:1px solid var(--line); color:var(--muted); padding:25px 0 35px; font-size:.88rem; }
+    @media(max-width:760px) { .layout { grid-template-columns:1fr; } .top { min-height:74px; } .brand img { width:44px; height:44px; } .back { padding:9px 12px; font-size:.9rem; } }
+    @media(max-width:380px) { .brand small { display:none; } .wrap { width:min(100% - 24px,1100px); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="index.html" aria-label="Kraken Tres D, ir al inicio"><img src="assets/img/logo_ktd.webp" alt=""><span><strong>Kraken Tres D</strong><small>Impresión 3D en Guatemala</small></span></a>
+      <a class="back" href="index.html">← Volver al sitio</a>
+    </div>
+  </header>
+  <main class="wrap">
+    <span class="eyebrow">Cotizador orientativo</span>
+    <h1>Conoce un precio aproximado para tu impresión 3D.</h1>
+    <p class="intro">Si ya tienes el tiempo y peso estimados de tu modelo, ingresa tres datos para ver un rango de referencia en quetzales.</p>
+    <div class="layout">
+      <section class="card" aria-labelledby="datos-title">
+        <h2 id="datos-title">Datos de impresión</h2>
+        <p class="sub">Usa los valores estimados por tu programa de laminado.</p>
+        <form id="quote-form" novalidate>
+          <label for="tiempo"><span>Tiempo de impresión del lote</span><input id="tiempo" name="tiempo" type="text" inputmode="decimal" autocomplete="off" placeholder="Ej. 3.52" required aria-describedby="tiempo-help"><small class="help" id="tiempo-help">Formato horas.minutos: 3.52 equivale a 3 horas y 52 minutos. Ingresa el tiempo para todas las piezas juntas.</small></label>
+          <label for="peso"><span>Peso por pieza (g)</span><input id="peso" name="peso" type="number" inputmode="decimal" min="0.1" step="any" placeholder="Ej. 15" required><small class="help">Peso estimado de una sola pieza en gramos.</small></label>
+          <label for="cantidad"><span>Cantidad de piezas</span><input id="cantidad" name="cantidad" type="number" inputmode="numeric" min="1" step="1" placeholder="Ej. 4" required></label>
+          <p class="error" id="form-error" role="alert" aria-live="polite"></p>
+          <button type="submit">Calcular precio aproximado</button>
+        </form>
+      </section>
+      <section class="card result" id="resultado" aria-labelledby="resultado-title" aria-live="polite">
+        <span class="flag">Referencia de precio</span>
+        <h2 id="resultado-title" style="margin-top:12px">Tu estimación</h2>
+        <div class="empty" id="empty-state">Completa los tres datos y pulsa “Calcular precio aproximado” para ver el resultado.</div>
+        <div id="quote-output" hidden>
+          <div class="quote-value" id="unit-range"></div>
+          <p class="quote-caption">Rango aproximado por pieza</p>
+          <div class="divider"></div>
+          <div class="detail"><span>Cantidad</span><strong id="output-quantity"></strong></div>
+          <div class="detail"><span>Total aproximado del lote</span><strong id="lot-range"></strong></div>
+          <p class="notice">Este precio es solo una referencia. El precio final se confirma cuando nos indiques que estás interesado y revisemos el modelo. Puede variar por argollas de llavero, chips, imanes, otros accesorios, ensambles especiales, material, acabados o un acuerdo por mayor.</p>
+          <a class="cta" id="whatsapp-link" href="https://wa.me/50247461797" target="_blank" rel="noopener noreferrer">Consultar precio final por WhatsApp</a>
+        </div>
+        <p class="fine">Si todavía no tienes el tiempo o peso estimado, <a href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20cotizar%20un%20modelo%203D" target="_blank" rel="noopener noreferrer">escríbenos con tu modelo</a> y te ayudamos.</p>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap">Kraken Tres D · Llevamos tus ideas al siguiente nivel.</div></footer>
+  <script>
+    // Tarifa pública de referencia. El resultado no sustituye una cotización revisada.
+    const REFERENCE = Object.freeze({ filamentPerKg: 150, watts: 110, energyPerKwh: 1.8221, machinePerHour: 2.50, allowance: 1.15 });
+    const form = document.getElementById('quote-form');
+    const fields = [document.getElementById('tiempo'), document.getElementById('peso'), document.getElementById('cantidad')];
+    const money = value => `Q${value.toFixed(2)}`;
+
+    function parseTime(value) {
+      const match = String(value).trim().replace(',', '.').match(/^(\d+)(?:\.(\d{2})|:(\d{1,2}))?$/);
+      if (!match) return null;
+      const hours = Number(match[1]);
+      const minutes = Number(match[2] || match[3] || 0);
+      if (!Number.isSafeInteger(hours) || minutes > 59 || (hours === 0 && minutes === 0)) return null;
+      return hours + minutes / 60;
+    }
+
+    function estimate(timeHours, weightGrams, quantity) {
+      const material = weightGrams * quantity / 1000 * REFERENCE.filamentPerKg;
+      const hourly = REFERENCE.watts / 1000 * REFERENCE.energyPerKwh + REFERENCE.machinePerHour;
+      const referenceLot = (material + timeHours * hourly) * REFERENCE.allowance;
+      return { unitLow: referenceLot * 1.5 / quantity, unitHigh: referenceLot * 3 / quantity,
+        lotLow: referenceLot * 1.5, lotHigh: referenceLot * 3 };
+    }
+
+    function clearResult() {
+      document.getElementById('quote-output').hidden = true;
+      document.getElementById('empty-state').hidden = false;
+    }
+
+    fields.forEach(field => field.addEventListener('input', () => {
+      field.removeAttribute('aria-invalid');
+      document.getElementById('form-error').textContent = '';
+      clearResult();
+    }));
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const time = parseTime(fields[0].value);
+      const weight = Number(fields[1].value);
+      const quantity = Number(fields[2].value);
+      let invalid = null;
+      let message = '';
+      if (time === null) { invalid = fields[0]; message = 'Ingresa un tiempo válido mayor que cero. Ejemplo: 3.52 para 3 h 52 min.'; }
+      else if (!fields[1].value.trim() || !Number.isFinite(weight) || weight <= 0) { invalid = fields[1]; message = 'Ingresa un peso por pieza mayor que cero.'; }
+      else if (!fields[2].value.trim() || !Number.isSafeInteger(quantity) || quantity < 1) { invalid = fields[2]; message = 'Ingresa una cantidad entera de al menos 1 pieza.'; }
+      if (invalid) {
+        document.getElementById('form-error').textContent = message;
+        invalid.setAttribute('aria-invalid', 'true');
+        invalid.focus();
+        clearResult();
+        return;
+      }
+      const result = estimate(time, weight, quantity);
+      if (!Object.values(result).every(Number.isFinite)) {
+        document.getElementById('form-error').textContent = 'Los datos ingresados son demasiado grandes. Revísalos e intenta de nuevo.';
+        clearResult();
+        return;
+      }
+      const range = (low, high) => `${money(low)} – ${money(high)}`;
+      document.getElementById('unit-range').textContent = range(result.unitLow, result.unitHigh);
+      document.getElementById('lot-range').textContent = range(result.lotLow, result.lotHigh);
+      document.getElementById('output-quantity').textContent = `${quantity} ${quantity === 1 ? 'pieza' : 'piezas'}`;
+      const messageText = `Hola Kraken Tres D, estoy interesado en confirmar el precio de una impresión 3D. Tiempo total estimado: ${fields[0].value.trim()} h.mm; peso por pieza: ${weight} g; cantidad: ${quantity}. La página me mostró un rango orientativo de ${range(result.lotLow, result.lotHigh)} por el lote. ¿Pueden revisar el modelo y darme el precio final?`;
+      document.getElementById('whatsapp-link').href = `https://wa.me/50247461797?text=${encodeURIComponent(messageText)}`;
+      document.getElementById('form-error').textContent = '';
+      document.getElementById('empty-state').hidden = true;
+      document.getElementById('quote-output').hidden = false;
+      if (window.matchMedia('(max-width: 760px)').matches) document.getElementById('resultado').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
+</body>
+</html>
