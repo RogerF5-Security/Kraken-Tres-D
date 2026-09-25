@@ -161,7 +161,7 @@
       document.getElementById('unit-range').textContent = range(result.unitLow, result.unitHigh);
       document.getElementById('lot-range').textContent = range(result.lotLow, result.lotHigh);
       document.getElementById('output-quantity').textContent = `${quantity} ${quantity === 1 ? 'pieza' : 'piezas'}`;
-      const messageText = `Hola Kraken Tres D, estoy interesado en confirmar el precio de una impresión 3D. Tiempo total estimado: ${fields[0].value.trim()} h.mm; peso por pieza: ${weight} g; cantidad: ${quantity}. La página me mostró un rango orientativo de ${range(result.lotLow, result.lotHigh)} por el lote. ¿Pueden revisar el modelo y darme el precio final?`;
+      const messageText = `Hola Kraken Tres D, estoy interesado en confirmar el precio de una impresión 3D. Tiempo total estimado: ${fields[0].value.trim()} (horas:minutos); peso por pieza: ${weight} g; cantidad: ${quantity}. La página me mostró un rango orientativo de ${range(result.lotLow, result.lotHigh)} por el lote. ¿Pueden revisar el modelo y darme el precio final?`;
       document.getElementById('whatsapp-link').href = `https://wa.me/50247461797?text=${encodeURIComponent(messageText)}`;
       document.getElementById('form-error').textContent = '';
       document.getElementById('empty-state').hidden = true;
