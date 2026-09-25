@@ -66,7 +66,6 @@
     .profile-area select { width:100%; min-height:50px; border:1px solid #54707b; border-radius:12px; background:#071b25; color:var(--text); padding:10px; font:inherit; }
     .profile-area select:focus { outline:2px solid var(--cyan); }
     .profile-area p { color:var(--muted); line-height:1.5; margin:10px 0 0; }
-    .license { border-left:3px solid var(--orange); color:#ffe0c8; background:#2d231f; padding:12px 15px; border-radius:0 10px 10px 0; line-height:1.5; }
     footer { border-top:1px solid var(--line); color:var(--muted); padding:25px 0 35px; font-size:.88rem; }
     @media(max-width:760px) { .layout,.auto-grid { grid-template-columns:1fr; } .auto-actions { display:block; } .auto-actions button { width:100%; } .auto-status { display:block; margin-top:12px; } .top { min-height:74px; } .brand img { width:44px; height:44px; } .back { padding:9px 12px; font-size:.9rem; } }
     @media(max-width:380px) { .brand small { display:none; } .wrap { width:min(100% - 24px,1100px); } }
@@ -99,7 +98,7 @@
         <strong id="model-title"></strong>
         <label for="profile-select"><span>Perfil de impresión</span><select id="profile-select"></select></label>
         <p id="profile-details"></p>
-        <p><a id="model-source" href="https://makerworld.com/" target="_blank" rel="noopener noreferrer">Ver modelo y licencia en MakerWorld</a></p>
+        <p><a id="model-source" href="https://makerworld.com/" target="_blank" rel="noopener noreferrer">Ver modelo original en MakerWorld</a></p>
       </div>
     </section>
     <div class="layout">
@@ -125,7 +124,6 @@
           <div class="detail"><span>Cantidad</span><strong id="output-quantity"></strong></div>
           <div class="detail"><span>Total aproximado del lote</span><strong id="lot-range"></strong></div>
           <p class="notice">Este precio es solo una referencia. El precio final se confirma cuando nos indiques que estás interesado y revisemos el modelo. Puede variar por argollas de llavero, chips, imanes, otros accesorios, ensambles especiales, material, acabados o un acuerdo por mayor.</p>
-          <p class="license" id="license-warning" hidden></p>
           <a class="cta" id="whatsapp-link" href="https://wa.me/50247461797" target="_blank" rel="noopener noreferrer">Consultar precio final por WhatsApp</a>
         </div>
         <p class="fine">Si todavía no tienes el tiempo o peso estimado, <a href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20cotizar%20un%20modelo%203D" target="_blank" rel="noopener noreferrer">escríbenos con tu modelo</a> y te ayudamos.</p>
@@ -171,16 +169,12 @@
 
     function range(low, high) { return `${money(low)} – ${money(high)}`; }
 
-    function showResult(result, countLabel, caption, messageText, licenseMessage = '') {
+    function showResult(result, countLabel, caption, messageText) {
       if (!Object.values(result).every(Number.isFinite)) return false;
       document.getElementById('unit-range').textContent = range(result.unitLow, result.unitHigh);
       document.getElementById('lot-range').textContent = range(result.lotLow, result.lotHigh);
       document.getElementById('output-quantity').textContent = countLabel;
       document.getElementById('quote-caption').textContent = caption;
-      const licenseWarning = document.getElementById('license-warning');
-      licenseWarning.textContent = licenseMessage;
-      licenseWarning.hidden = !licenseMessage;
-      document.getElementById('whatsapp-link').textContent = licenseMessage ? 'Consultar permiso y precio final por WhatsApp' : 'Consultar precio final por WhatsApp';
       document.getElementById('whatsapp-link').href = `https://wa.me/50247461797?text=${encodeURIComponent(messageText)}`;
       document.getElementById('empty-state').hidden = true;
       document.getElementById('quote-output').hidden = false;
@@ -219,12 +213,8 @@
         return;
       }
       const result = estimate(profile.seconds / 3600 * quantity, profile.grams, quantity);
-      const restricted = /Standard Digital File License|NonCommercial|\bNC\b/i.test(modelData.license);
-      const licenseMessage = restricted
-        ? `MakerWorld indica la licencia «${modelData.license}». Antes de vender impresiones de este modelo debemos confirmar la autorización comercial del diseñador.`
-        : (modelData.license === 'No especificada' ? 'MakerWorld no indicó una licencia. Confirmaremos el permiso de uso comercial antes de aceptar el pedido.' : '');
-      const messageText = `Hola Kraken Tres D, quiero consultar este modelo: ${modelData.link}. Perfil: ${profile.title} (ID ${profile.id}); ${quantity} ${quantity === 1 ? 'impresión' : 'impresiones'} del perfil. Tiempo estimado por impresión: ${duration(profile.seconds)}; peso por impresión: ${profile.grams} g. Rango orientativo total: ${range(result.lotLow, result.lotHigh)}. ¿Pueden verificar la licencia y confirmar el precio final?`;
-      if (!showResult(result, `${quantity} ${quantity === 1 ? 'impresión' : 'impresiones'}`, 'Rango aproximado por impresión del perfil', messageText, licenseMessage)) {
+      const messageText = `Hola Kraken Tres D, quiero consultar este modelo: ${modelData.link}. Perfil: ${profile.title} (ID ${profile.id}); ${quantity} ${quantity === 1 ? 'impresión' : 'impresiones'} del perfil. Tiempo estimado por impresión: ${duration(profile.seconds)}; peso por impresión: ${profile.grams} g. Rango orientativo total: ${range(result.lotLow, result.lotHigh)}. ¿Pueden confirmar el precio final?`;
+      if (!showResult(result, `${quantity} ${quantity === 1 ? 'impresión' : 'impresiones'}`, 'Rango aproximado por impresión del perfil', messageText)) {
         document.getElementById('auto-error').textContent = 'Los datos del perfil son demasiado grandes para calcular el precio.';
         clearResult();
       } else {

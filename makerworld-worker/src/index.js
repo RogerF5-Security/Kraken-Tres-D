@@ -46,7 +46,6 @@ export default {
     return reply({
       id: Number(id),
       title: String(design.title || 'Modelo de MakerWorld').slice(0, 200),
-      license: String(design.license || 'No especificada').slice(0, 120),
       profiles,
     }, 200);
   },
