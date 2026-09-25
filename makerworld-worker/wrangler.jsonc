@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json.schemastore.org/wrangler.json",
+  "name": "kraken-makerworld-quote",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-25"
+}

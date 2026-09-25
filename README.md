@@ -30,6 +30,14 @@ https://rogerf5-security.github.io/Kraken-Tres-D/
 - **Gadgets y accesorios:** organizadores, articulos utiles, novedades y productos para el dia a dia.
 - **Ideas a medida:** cuentanos que necesitas y coordinamos medidas, material, color, cantidad y entrega.
 
+## Cotizador por enlace de MakerWorld
+
+El cotizador puede leer los perfiles publicados de un modelo de MakerWorld y seleccionar el `profileId` del enlace. Muestra el tiempo y peso de **una impresión del perfil completo**; si el perfil contiene varias piezas o placas, una repetición incluye todas ellas. El cálculo manual sigue disponible.
+
+La consulta en vivo usa `makerworld-worker/`, un servicio separado porque GitHub Pages no puede leer directamente la API de Bambu Lab por CORS. Después de desplegar el Worker, coloca su URL pública en `MODEL_API` dentro de `cotizador.html` y publica el sitio. El Worker solo acepta identificadores numéricos y devuelve título, licencia y datos de impresión; no descarga archivos del modelo.
+
+Los perfiles son estimaciones del autor y pueden diferir de la impresora, material o ajustes finales. Para modelos con licencia no comercial, la página avisa que se debe confirmar permiso comercial antes de aceptar el pedido.
+
 ## Inspiracion 3D
 
 La pagina `inspiracion.html` ayuda a clientes que preguntan "que puedes imprimir?".
