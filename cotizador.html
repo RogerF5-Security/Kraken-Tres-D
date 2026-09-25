@@ -198,6 +198,17 @@
       return { id: model[1], profileId: profile ? Number(profile[1]) : null, url: url.href };
     }
 
+    async function fetchModel(id) {
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          return await fetch(`${MODEL_API}/model/${id}`, { signal: AbortSignal.timeout(12000) });
+        } catch (error) {
+          if (attempt === 1 || (error.name !== 'TypeError' && error.name !== 'TimeoutError')) throw error;
+          await new Promise(resolve => setTimeout(resolve, 1200));
+        }
+      }
+    }
+
     function quoteSelectedProfile() {
       if (!modelData) return;
       const quantity = Number(autoQuantity.value);
@@ -250,8 +261,11 @@
       button.disabled = true;
       document.getElementById('auto-error').textContent = '';
       document.getElementById('auto-status').textContent = 'Consultando perfiles de impresión…';
+      document.getElementById('profile-area').hidden = true;
+      modelData = null;
+      clearResult();
       try {
-        const response = await fetch(`${MODEL_API}/model/${parsed.id}`, { signal: AbortSignal.timeout(12000) });
+        const response = await fetchModel(parsed.id);
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || 'No pudimos leer ese modelo.');
         if (modelUrl.value !== requestedUrl) return;
@@ -276,7 +290,13 @@
         quoteSelectedProfile();
       } catch (error) {
         if (modelUrl.value === requestedUrl) {
-          document.getElementById('auto-error').textContent = error.name === 'TimeoutError' ? 'La consulta tardó demasiado. Intenta de nuevo.' : (error.message || 'No se pudo consultar MakerWorld.');
+          document.getElementById('auto-error').textContent = error.name === 'TimeoutError'
+            ? 'La consulta tardó demasiado. Intenta de nuevo o usa los campos manuales.'
+            : error.name === 'TypeError'
+              ? 'No se pudo conectar con el servicio. Comprueba tu conexión e intenta de nuevo; también puedes usar los campos manuales.'
+              : error.name === 'SyntaxError'
+                ? 'El servicio devolvió una respuesta inesperada. Intenta de nuevo en unos minutos.'
+                : (error.message || 'No se pudo consultar MakerWorld.');
           document.getElementById('auto-status').textContent = '';
         }
       } finally {
