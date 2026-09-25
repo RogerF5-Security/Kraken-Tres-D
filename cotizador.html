@@ -62,12 +62,17 @@
     .auto-status { color:var(--muted); line-height:1.5; }
     .auto-status:empty { display:none; }
     .profile-area { margin-top:20px; padding:20px; border:1px solid var(--line); border-radius:15px; background:#0a222d; }
+    .model-preview-layout.has-image { display:grid; grid-template-columns:minmax(180px,230px) minmax(0,1fr); gap:20px; align-items:center; }
+    .model-image-link { display:block; border-radius:13px; overflow:hidden; background:#17333d; border:1px solid var(--line); aspect-ratio:1; }
+    .model-image-link[hidden] { display:none; }
+    .model-image-link img { width:100%; height:100%; object-fit:contain; display:block; }
+    .model-image-link:focus-visible { outline:3px solid var(--cyan); outline-offset:3px; }
     .profile-area label { margin:14px 0 0; }
     .profile-area select { width:100%; min-height:50px; border:1px solid #54707b; border-radius:12px; background:#071b25; color:var(--text); padding:10px; font:inherit; }
     .profile-area select:focus { outline:2px solid var(--cyan); }
     .profile-area p { color:var(--muted); line-height:1.5; margin:10px 0 0; }
     footer { border-top:1px solid var(--line); color:var(--muted); padding:25px 0 35px; font-size:.88rem; }
-    @media(max-width:760px) { .layout,.auto-grid { grid-template-columns:1fr; } .auto-actions { display:block; } .auto-actions button { width:100%; } .auto-status { display:block; margin-top:12px; } .top { min-height:74px; } .brand img { width:44px; height:44px; } .back { padding:9px 12px; font-size:.9rem; } }
+    @media(max-width:760px) { .layout,.auto-grid,.model-preview-layout.has-image { grid-template-columns:1fr; } .model-image-link { max-width:260px; } .auto-actions { display:block; } .auto-actions button { width:100%; } .auto-status { display:block; margin-top:12px; } .top { min-height:74px; } .brand img { width:44px; height:44px; } .back { padding:9px 12px; font-size:.9rem; } }
     @media(max-width:380px) { .brand small { display:none; } .wrap { width:min(100% - 24px,1100px); } }
   </style>
 </head>
@@ -95,10 +100,15 @@
         <p class="error" id="auto-error" role="alert"></p>
       </form>
       <div class="profile-area" id="profile-area" hidden>
-        <strong id="model-title"></strong>
-        <label for="profile-select"><span>Perfil de impresión</span><select id="profile-select"></select></label>
-        <p id="profile-details"></p>
-        <p><a id="model-source" href="https://makerworld.com/" target="_blank" rel="noopener noreferrer">Ver modelo original en MakerWorld</a></p>
+        <div class="model-preview-layout" id="model-preview-layout">
+          <a class="model-image-link" id="model-image-link" href="https://makerworld.com/" target="_blank" rel="noopener noreferrer" hidden><img id="model-image" alt="" decoding="async"></a>
+          <div>
+            <strong id="model-title"></strong>
+            <label for="profile-select"><span>Perfil de impresión</span><select id="profile-select"></select></label>
+            <p id="profile-details"></p>
+            <p><a id="model-source" href="https://makerworld.com/" target="_blank" rel="noopener noreferrer">Ver modelo original en MakerWorld</a></p>
+          </div>
+        </div>
       </div>
     </section>
     <div class="layout">
@@ -123,7 +133,7 @@
           <div class="divider"></div>
           <div class="detail"><span>Cantidad</span><strong id="output-quantity"></strong></div>
           <div class="detail"><span>Total aproximado del lote</span><strong id="lot-range"></strong></div>
-          <p class="notice">Este precio es solo una referencia. El precio final se confirma cuando nos indiques que estás interesado y revisemos el modelo. Puede variar por argollas de llavero, chips, imanes, otros accesorios, ensambles especiales, material, acabados o un acuerdo por mayor.</p>
+          <p class="notice">Este precio es solo una referencia. El precio final se confirma cuando nos indiques que estás interesado y revisemos el modelo. Si eliges un tamaño más pequeño, el precio puede bajar; si lo quieres más grande, puede subir. También puede variar por argollas de llavero, chips, imanes, otros accesorios, ensambles especiales, material, acabados o un acuerdo por mayor.</p>
           <a class="cta" id="whatsapp-link" href="https://wa.me/50247461797" target="_blank" rel="noopener noreferrer">Consultar precio final por WhatsApp</a>
         </div>
         <p class="fine">Si todavía no tienes el tiempo o peso estimado, <a href="https://wa.me/50247461797?text=Hola%20Kraken%20Tres%20D,%20quiero%20cotizar%20un%20modelo%203D" target="_blank" rel="noopener noreferrer">escríbenos con tu modelo</a> y te ayudamos.</p>
@@ -165,6 +175,31 @@
     function clearResult() {
       document.getElementById('quote-output').hidden = true;
       document.getElementById('empty-state').hidden = false;
+    }
+
+    function resetPreview() {
+      const image = document.getElementById('model-image');
+      image.onload = null;
+      image.onerror = null;
+      image.removeAttribute('src');
+      document.getElementById('model-image-link').hidden = true;
+      document.getElementById('model-preview-layout').classList.remove('has-image');
+    }
+
+    function showPreview(url, title, modelLink) {
+      resetPreview();
+      if (!url) return;
+      const image = document.getElementById('model-image');
+      const imageLink = document.getElementById('model-image-link');
+      image.alt = `Vista previa de ${title}`;
+      imageLink.href = modelLink;
+      image.onload = () => {
+        if (modelData?.coverUrl !== url) return;
+        imageLink.hidden = false;
+        document.getElementById('model-preview-layout').classList.add('has-image');
+      };
+      image.onerror = () => { if (modelData?.coverUrl === url) resetPreview(); };
+      image.src = url;
     }
 
     function range(low, high) { return `${money(low)} – ${money(high)}`; }
@@ -225,6 +260,7 @@
 
     modelUrl.addEventListener('input', () => {
       modelData = null;
+      resetPreview();
       document.getElementById('profile-area').hidden = true;
       document.getElementById('auto-error').textContent = '';
       document.getElementById('auto-status').textContent = '';
@@ -251,6 +287,7 @@
       button.disabled = true;
       document.getElementById('auto-error').textContent = '';
       document.getElementById('auto-status').textContent = 'Consultando perfiles de impresión…';
+      resetPreview();
       document.getElementById('profile-area').hidden = true;
       modelData = null;
       clearResult();
@@ -263,6 +300,7 @@
         modelData = { ...data, link: parsed.url };
         document.getElementById('model-title').textContent = data.title;
         document.getElementById('model-source').href = parsed.url;
+        showPreview(data.coverUrl, data.title, parsed.url);
         profileSelect.replaceChildren(...data.profiles.map(profile => {
           const option = document.createElement('option');
           option.value = String(profile.id);

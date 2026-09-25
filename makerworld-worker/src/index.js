@@ -4,6 +4,15 @@ function reply(payload, status) {
   return new Response(JSON.stringify(payload), { status, headers });
 }
 
+function publicImageUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && url.hostname === 'makerworld.bblmw.com' ? url.href : null;
+  } catch {
+    return null;
+  }
+}
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
@@ -46,6 +55,7 @@ export default {
     return reply({
       id: Number(id),
       title: String(design.title || 'Modelo de MakerWorld').slice(0, 200),
+      coverUrl: publicImageUrl(design.coverUrl) || publicImageUrl(design.instances?.[0]?.cover),
       profiles,
     }, 200);
   },
