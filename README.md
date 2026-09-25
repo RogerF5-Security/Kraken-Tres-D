@@ -34,7 +34,7 @@ https://rogerf5-security.github.io/Kraken-Tres-D/
 
 El cotizador puede leer los perfiles publicados de un modelo de MakerWorld y seleccionar el `profileId` del enlace. Muestra el tiempo y peso de **una impresión del perfil completo**; si el perfil contiene varias piezas o placas, una repetición incluye todas ellas. El cálculo manual sigue disponible.
 
-La consulta en vivo usa `makerworld-worker/`, un servicio separado porque GitHub Pages no puede leer directamente la API de Bambu Lab por CORS. Después de desplegar el Worker, coloca su URL pública en `MODEL_API` dentro de `cotizador.html` y publica el sitio. El Worker solo acepta identificadores numéricos y devuelve título, licencia y datos de impresión; no descarga archivos del modelo.
+La consulta en vivo usa `makerworld-worker/`, un servicio separado porque GitHub Pages no puede leer directamente la API de Bambu Lab por CORS. El Worker desplegado está configurado en `MODEL_API` dentro de `cotizador.html`. Si cambia su URL, actualiza esa constante y vuelve a publicar el sitio. El Worker solo acepta identificadores numéricos y devuelve título, licencia y datos de impresión; no descarga archivos del modelo.
 
 Los perfiles son estimaciones del autor y pueden diferir de la impresora, material o ajustes finales. Para modelos con licencia no comercial, la página avisa que se debe confirmar permiso comercial antes de aceptar el pedido.
 

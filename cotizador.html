@@ -136,7 +136,7 @@
   <script>
     // Tarifa pública de referencia. El resultado no sustituye una cotización revisada.
     const REFERENCE = Object.freeze({ filamentPerKg: 150, watts: 110, energyPerKwh: 1.8221, machinePerHour: 2.50, allowance: 1.15 });
-    const MODEL_API = location.hostname === '127.0.0.1' ? 'http://127.0.0.1:8787' : '__WORKER_URL__';
+    const MODEL_API = 'https://kraken-makerworld-quote.aranalemusrogerfernando.workers.dev';
     const form = document.getElementById('quote-form');
     const fields = [document.getElementById('tiempo'), document.getElementById('peso'), document.getElementById('cantidad')];
     const autoForm = document.getElementById('auto-form');
